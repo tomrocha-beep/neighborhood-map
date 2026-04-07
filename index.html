@@ -11,11 +11,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'DM Sans', sans-serif; background: #0f1219; color: #e8eaf0; height: 100vh; display: flex; overflow: hidden; }
 
-#sidebar {
-  width: 310px; min-width: 310px; height: 100vh;
-  background: #0b0e16; display: flex; flex-direction: column;
-  border-right: 1px solid #1e2433; z-index: 10;
-}
+#sidebar { width: 310px; min-width: 310px; height: 100vh; background: #0b0e16; display: flex; flex-direction: column; border-right: 1px solid #1e2433; z-index: 10; }
 #map-wrap { position: relative; flex: 1; height: 100vh; }
 #map { width: 100%; height: 100%; }
 
@@ -23,10 +19,7 @@ body { font-family: 'DM Sans', sans-serif; background: #0f1219; color: #e8eaf0; 
 .sidebar-header h1 { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 3px; }
 .sidebar-header p { font-size: 11px; color: #5c6480; }
 
-.section-label {
-  font-size: 10px; color: #5c6480; letter-spacing: 0.12em;
-  text-transform: uppercase; padding: 12px 18px 7px;
-}
+.section-label { font-size: 10px; color: #5c6480; letter-spacing: 0.12em; text-transform: uppercase; padding: 12px 18px 7px; }
 
 .weights-panel { padding: 0 18px 12px; border-bottom: 1px solid #1e2433; }
 .weight-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
@@ -34,50 +27,36 @@ body { font-family: 'DM Sans', sans-serif; background: #0f1219; color: #e8eaf0; 
 .weight-val { font-size: 12px; font-family: 'DM Mono', monospace; color: #7dd3a8; width: 14px; text-align: right; flex-shrink: 0; }
 input[type=range] { flex: 1; accent-color: #7dd3a8; cursor: pointer; height: 2px; }
 
-.layers-panel {
-  padding: 0 18px 12px; border-bottom: 1px solid #1e2433;
-  display: flex; flex-wrap: wrap; gap: 6px;
-}
-.layer-btn {
-  padding: 4px 11px; border-radius: 20px; border: 1px solid #2a3450;
-  background: transparent; color: #8891a8; font-size: 11px; cursor: pointer;
-  font-family: 'DM Sans', sans-serif; transition: all 0.15s;
-}
+.layers-panel { padding: 0 18px 12px; border-bottom: 1px solid #1e2433; display: flex; flex-wrap: wrap; gap: 6px; }
+.layer-btn { padding: 4px 11px; border-radius: 20px; border: 1px solid #2a3450; background: transparent; color: #8891a8; font-size: 11px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
 .layer-btn.active { background: #1e2d4a; border-color: #3a4a6e; color: #7dd3a8; }
+
+.school-level-panel { padding: 0 18px 12px; border-bottom: 1px solid #1e2433; display: none; gap: 4px; }
+.school-level-panel.visible { display: flex; }
+.level-btn { flex: 1; padding: 5px 0; border-radius: 6px; border: 1px solid #2a3450; background: transparent; color: #8891a8; font-size: 11px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; text-align: center; }
+.level-btn.active { background: #1a2d1e; border-color: #2d5a38; color: #7dd3a8; }
 
 .results-list { flex: 1; overflow-y: auto; padding: 6px 10px 10px; }
 .results-list::-webkit-scrollbar { width: 4px; }
 .results-list::-webkit-scrollbar-track { background: transparent; }
 .results-list::-webkit-scrollbar-thumb { background: #1e2433; border-radius: 2px; }
 
-.nbr-card {
-  padding: 9px 11px; border-radius: 8px; margin-bottom: 5px;
-  cursor: pointer; border: 1px solid transparent; transition: all 0.15s;
-}
+.nbr-card { padding: 9px 11px; border-radius: 8px; margin-bottom: 5px; cursor: pointer; border: 1px solid transparent; transition: all 0.15s; }
 .nbr-card:hover { background: #141924; border-color: #1e2433; }
 .nbr-card.active { background: #151c2c; border-color: #3a4a6e; }
-
 .nbr-top { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
 .nbr-rank { font-size: 11px; color: #5c6480; font-family: 'DM Mono', monospace; width: 22px; flex-shrink: 0; }
 .nbr-name { font-size: 13px; font-weight: 600; flex: 1; line-height: 1.2; }
 .nbr-score { font-size: 15px; font-weight: 700; font-family: 'DM Mono', monospace; flex-shrink: 0; }
-
 .score-bar-bg { background: #1e2433; border-radius: 3px; height: 3px; margin-bottom: 7px; }
 .score-bar-fill { height: 3px; border-radius: 3px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); }
-
 .nbr-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 10px; }
 .nbr-stat { font-size: 11px; color: #8891a8; }
 .nbr-stat span { color: #c4c9d8; font-weight: 500; }
 
-/* Mapbox popup overrides */
-.mapboxgl-popup-content {
-  background: #151c2c !important; border: 1px solid #2a3450 !important;
-  border-radius: 10px !important; padding: 14px !important;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important; color: #e8eaf0 !important;
-}
+.mapboxgl-popup-content { background: #151c2c !important; border: 1px solid #2a3450 !important; border-radius: 10px !important; padding: 14px !important; box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important; color: #e8eaf0 !important; }
 .mapboxgl-popup-close-button { color: #5c6480 !important; font-size: 16px !important; right: 8px !important; top: 6px !important; }
 .mapboxgl-popup-tip { display: none !important; }
-
 .popup-name { font-size: 14px; font-weight: 700; margin-bottom: 3px; color: #e8eaf0; }
 .popup-district { font-size: 10px; color: #5c6480; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
 .popup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 9px; }
@@ -85,39 +64,20 @@ input[type=range] { flex: 1; accent-color: #7dd3a8; cursor: pointer; height: 2px
 .popup-stat .val { color: #e8eaf0; font-weight: 600; font-size: 13px; }
 .popup-notes { font-size: 11px; color: #8891a8; line-height: 1.55; border-top: 1px solid #1e2d3a; padding-top: 8px; }
 
-/* Map overlays */
-.iso-legend {
-  position: absolute; bottom: 36px; right: 10px;
-  background: rgba(11,14,22,0.93); border: 1px solid #1e2433;
-  border-radius: 8px; padding: 10px 14px; font-size: 11px; z-index: 5;
-  backdrop-filter: blur(4px);
-}
+.iso-legend { position: absolute; bottom: 36px; right: 10px; background: rgba(11,14,22,0.93); border: 1px solid #1e2433; border-radius: 8px; padding: 10px 14px; font-size: 11px; z-index: 5; backdrop-filter: blur(4px); }
 .iso-legend h4 { font-size: 10px; color: #5c6480; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 7px; }
+.school-legend { position: absolute; bottom: 36px; left: 10px; background: rgba(11,14,22,0.93); border: 1px solid #1e2433; border-radius: 8px; padding: 10px 14px; font-size: 11px; z-index: 5; backdrop-filter: blur(4px); display: none; }
+.school-legend h4 { font-size: 10px; color: #5c6480; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 7px; }
 .legend-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; color: #c4c9d8; }
 .legend-swatch { width: 26px; height: 8px; border-radius: 2px; }
 
-.loading-msg {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-  background: rgba(11,14,22,0.92); border: 1px solid #1e2433; border-radius: 10px;
-  padding: 14px 22px; font-size: 13px; color: #8891a8; z-index: 20;
-  backdrop-filter: blur(6px); pointer-events: none; white-space: nowrap;
-}
-
-.uw-pin {
-  width: 14px; height: 14px; background: #7dd3a8;
-  border: 3px solid #e8eaf0; border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(125,211,168,0.35), 0 2px 8px rgba(0,0,0,0.5);
-}
-
-.data-note {
-  padding: 8px 18px 14px; font-size: 10px; color: #3a4050; line-height: 1.6;
-  border-top: 1px solid #1a2030; margin-top: 4px;
-}
+.loading-msg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(11,14,22,0.92); border: 1px solid #1e2433; border-radius: 10px; padding: 14px 22px; font-size: 13px; color: #8891a8; z-index: 20; backdrop-filter: blur(6px); pointer-events: none; white-space: nowrap; }
+.uw-pin { width: 14px; height: 14px; background: #7dd3a8; border: 3px solid #e8eaf0; border-radius: 50%; box-shadow: 0 0 0 3px rgba(125,211,168,0.35), 0 2px 8px rgba(0,0,0,0.5); }
+.data-note { padding: 8px 18px 14px; font-size: 10px; color: #3a4050; line-height: 1.6; border-top: 1px solid #1a2030; margin-top: 4px; }
 </style>
 </head>
 <body>
 
-<!-- ─── SIDEBAR ─── -->
 <div id="sidebar">
   <div class="sidebar-header">
     <h1>🗺 Seattle Neighborhood Finder</h1>
@@ -131,215 +91,298 @@ input[type=range] { flex: 1; accent-color: #7dd3a8; cursor: pointer; height: 2px
   <div class="layers-panel">
     <button class="layer-btn active" data-layer="isochrones">⏱ Commute Rings</button>
     <button class="layer-btn active" data-layer="markers">📍 Neighborhoods</button>
+    <button class="layer-btn" data-layer="schools">🎓 School Areas</button>
   </div>
 
-  <div class="section-label" id="results-label">Ranked Neighborhoods</div>
+  <div class="school-level-panel" id="school-level-panel">
+    <button class="level-btn active" data-level="elementary">Elementary</button>
+    <button class="level-btn" data-level="middle">Middle</button>
+    <button class="level-btn" data-level="high">High School</button>
+  </div>
+
+  <div class="section-label">Ranked Neighborhoods</div>
   <div class="results-list" id="results-list"></div>
-
-  <div class="data-note">
-    Commute rings = driving time from UW (Mapbox). Home prices = approx. 2024–25 medians.
-    School ratings = composite from OSPI + GreatSchools data. Click any marker or card for details.
-  </div>
+  <div class="data-note">Commute rings = driving time from UW (Mapbox). School boundaries from Seattle Open Data / SPS 2023–24. Ratings composite from OSPI + GreatSchools. Click any marker or card for details.</div>
 </div>
 
-<!-- ─── MAP ─── -->
 <div id="map-wrap">
   <div id="map"></div>
   <div class="loading-msg" id="loading">Loading map…</div>
+
   <div class="iso-legend" id="iso-legend" style="display:none">
     <h4>Drive time from UW</h4>
     <div class="legend-row"><div class="legend-swatch" style="background:#7dd3a8;opacity:.7"></div>≤ 15 min</div>
     <div class="legend-row"><div class="legend-swatch" style="background:#f4c06f;opacity:.7"></div>15–30 min</div>
     <div class="legend-row"><div class="legend-swatch" style="background:#f47a7a;opacity:.7"></div>30–45 min</div>
   </div>
+
+  <div class="school-legend" id="school-legend">
+    <h4>School Rating</h4>
+    <div class="legend-row"><div class="legend-swatch" style="background:#7dd3a8;opacity:.8"></div>Excellent (9+)</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#a8d87d;opacity:.8"></div>Very Good (8–9)</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#f4c06f;opacity:.8"></div>Good (7–8)</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#f4906f;opacity:.8"></div>Fair (6–7)</div>
+    <div class="legend-row"><div class="legend-swatch" style="background:#5c6480;opacity:.8"></div>Not rated</div>
+  </div>
 </div>
 
 <script>
-// ─── CONFIG ───────────────────────────────────────────────────────────────────
 const TOKEN = 'pk.eyJ1IjoidG9tcm9jaGE4OCIsImEiOiJjbW5vdWZodXEyNzZvMnRxNXo4aTRvbmdsIn0.QBRFka3M1aNTKJcUjDLqEQ';
-const UW    = [-122.3038, 47.6553];
+const UW = [-122.3038, 47.6553];
 
-// ─── DATA ─────────────────────────────────────────────────────────────────────
+const SCHOOL_URLS = {
+  elementary: 'https://opendata.arcgis.com/datasets/8908525050de4408a7373b0bf79c422d_0.geojson',
+  middle:     'https://opendata.arcgis.com/datasets/9a770c661424435cb370f8ca24194469_0.geojson',
+  high:       'https://opendata.arcgis.com/datasets/9be6e330f94548758dfaa927a5699b10_0.geojson',
+};
+
+const RATINGS = {
+  'Bryant':9.2,'Ravenna':8.6,'View Ridge':9.0,'Wedgwood':9.0,'John Rogers':7.8,
+  'Sand Point':7.5,'Laurelhurst':9.0,'Montlake':8.0,'Stevens':8.2,'McDonald':8.2,
+  'Green Lake':8.0,'Daniel Bagley':7.8,'Greenwood':7.2,'Northgate':6.5,'Viewlands':6.5,
+  'Olympic Hills':6.8,'Sacajawea':7.5,'Whittier':8.0,'West Woodland':8.0,'Adams':7.5,
+  'Maple':6.5,'Emerson':7.0,'Broadview-Thomson':7.2,'Thornton Creek':8.0,'Decatur':7.0,
+  'John Muir':6.8,'Leschi':7.2,'Madrona':7.0,'Hawthorne':6.8,'Kimball':6.5,
+  'Rainier View':6.0,'Dunlap':6.2,'Wing Luke':6.5,'Roxhill':6.2,'Sanislo':6.5,
+  'Alki':7.5,'Lafayette':7.8,'Fairmount Park':7.0,'Highland Park':6.5,'Gatewood':7.2,
+  'Arbor Heights':7.5,'Schmitz Park':7.8,'Concord':6.5,'Graham Hill':6.5,
+  'Beacon Hill':6.8,'Van Asselt':6.5,'Columbia':6.5,'Martin Luther King Jr':6.8,
+  // Middle
+  'Eckstein':9.0,'Hamilton':8.0,'Jane Addams':7.5,'Whitman':7.8,'Madison':7.0,
+  'Washington':7.2,'Mercer':6.5,'Denny':6.5,'McClure':7.5,'Robert Eagle Staff':7.0,
+  'Aki Kurose':6.5,'Meany':6.8,
+  // High
+  'Roosevelt':9.0,'Lincoln':8.5,'Garfield':7.5,'Nathan Hale':7.5,'Franklin':7.0,
+  'Rainier Beach':6.2,'West Seattle':7.5,'Chief Sealth':7.0,'Cleveland':6.8,
+  'Ingraham':8.2,'Ballard':8.5,
+};
+
+function lookupRating(name) {
+  if (!name) return null;
+  const clean = name.replace(/\s+(Elementary|Middle School|High School|K-8|School)\s*$/i,'').trim();
+  return RATINGS[clean] || RATINGS[name] || null;
+}
+
+function ratingColor(r) {
+  if (!r) return '#5c6480';
+  if (r >= 9.0) return '#7dd3a8';
+  if (r >= 8.0) return '#a8d87d';
+  if (r >= 7.0) return '#f4c06f';
+  return '#f4906f';
+}
+
 const NBRS = [
-  { name:"Wallingford",          lat:47.661,  lng:-122.334, commute:12, price:950,  walk:87, schools:8.2, safety:8.5, district:"Seattle Public Schools",         notes:"Quiet, family-friendly, great cafes. Very bikeable to UW across University Bridge." },
-  { name:"Ravenna / Bryant",     lat:47.670,  lng:-122.307, commute:14, price:875,  walk:82, schools:9.1, safety:9.0, district:"Seattle Public Schools",         notes:"Feeds Eckstein Middle & Roosevelt HS — two of Seattle's strongest public schools. Leafy, stable, community-oriented." },
-  { name:"Cowen Park / Roosevelt",lat:47.665, lng:-122.318, commute:16, price:900,  walk:80, schools:8.8, safety:9.0, district:"Seattle Public Schools",         notes:"Sweet spot between Ravenna and Wallingford. Roosevelt HS feeder. Charming park setting." },
-  { name:"Green Lake",           lat:47.680,  lng:-122.330, commute:18, price:920,  walk:85, schools:8.3, safety:9.0, district:"Seattle Public Schools",         notes:"Park-centric living, ideal for families. Popular on weekends. Easy bus corridor to UW." },
-  { name:"View Ridge",           lat:47.678,  lng:-122.288, commute:22, price:970,  walk:65, schools:9.2, safety:9.2, district:"Seattle Public Schools",         notes:"Highly regarded elementary school. More suburban feel, very safe, quiet streets." },
-  { name:"Wedgwood",             lat:47.681,  lng:-122.299, commute:24, price:800,  walk:62, schools:9.0, safety:9.0, district:"Seattle Public Schools",         notes:"Wedgwood Elementary is a standout. More affordable than comparable NE Seattle areas. Slightly car-dependent." },
-  { name:"Montlake",             lat:47.643,  lng:-122.302, commute:7,  price:1200, walk:72, schools:8.0, safety:9.0, district:"Seattle Public Schools",         notes:"Closest neighborhood to UW campus. Historic homes, tight-knit feel. Very limited inventory — rarely comes up." },
-  { name:"Fremont",              lat:47.651,  lng:-122.350, commute:16, price:895,  walk:88, schools:7.5, safety:7.8, district:"Seattle Public Schools",         notes:"Most walkable on this list. Eclectic character, dense restaurants and shops. School pipeline less strong than NE Seattle." },
-  { name:"Northgate",            lat:47.706,  lng:-122.327, commute:20, price:650,  walk:72, schools:6.5, safety:6.5, district:"Seattle Public Schools",         notes:"Link Light Rail to UW (~10 min train). Most affordable in-city option. Area still developing but improving rapidly." },
-  { name:"Columbia City",        lat:47.558,  lng:-122.291, commute:35, price:700,  walk:82, schools:6.8, safety:7.0, district:"Seattle Public Schools",         notes:"Light Rail access. Diverse, vibrant neighborhood with great food. Schools improving but still catching up." },
-  { name:"Mount Baker",          lat:47.579,  lng:-122.292, commute:28, price:750,  walk:74, schools:7.0, safety:7.0, district:"Seattle Public Schools",         notes:"Lake Washington views, light rail nearby. Mixed school quality. Affordable for Seattle proper." },
-  { name:"West Seattle (Admiral)",lat:47.576, lng:-122.383, commute:38, price:760,  walk:72, schools:7.2, safety:7.5, district:"Seattle Public Schools",         notes:"Strong neighborhood feel, good schools, some nice parks. West Seattle Bridge traffic can significantly affect commute." },
-  { name:"Shoreline (N. City)",  lat:47.757,  lng:-122.342, commute:30, price:700,  walk:58, schools:8.2, safety:8.2, district:"Shoreline School District",      notes:"Shoreline SD is consistently well-rated. Light Rail extension arriving soon. More suburban character." },
-  { name:"Kenmore",              lat:47.757,  lng:-122.243, commute:42, price:775,  walk:44, schools:8.0, safety:8.5, district:"Northshore School District",     notes:"Northshore SD is strong academically. Lake access. Quiet suburban setting. Long commute to UW." },
-  { name:"Bothell (south)",      lat:47.762,  lng:-122.205, commute:48, price:810,  walk:47, schools:8.2, safety:8.5, district:"Northshore School District",     notes:"Northshore SD. More newer construction than elsewhere. Family-oriented. Significant commute distance." },
-  { name:"Kirkland",             lat:47.681,  lng:-122.209, commute:42, price:1100, walk:64, schools:8.5, safety:9.0, district:"Lake Washington School District",notes:"Beautiful Eastside city. Excellent schools, genuinely walkable downtown core. Expensive and a real commute." },
-  { name:"Redmond",              lat:47.673,  lng:-122.121, commute:52, price:1200, walk:55, schools:9.0, safety:9.0, district:"Lake Washington School District",notes:"Top-tier Eastside schools. Very family-friendly. Significant commute. Tech-bubble pricing." },
-  { name:"Bellevue (west)",      lat:47.610,  lng:-122.201, commute:44, price:1350, walk:62, schools:9.2, safety:9.2, district:"Bellevue School District",       notes:"Outstanding school district. East Link light rail option. Among the most expensive on this list." },
-  { name:"Mercer Island",        lat:47.571,  lng:-122.222, commute:36, price:1800, walk:42, schools:9.8, safety:9.8, district:"Mercer Island School District",  notes:"Top-rated schools in Washington state. Very wealthy, very car-dependent. East Link provides one transit option." },
-  { name:"Renton (north)",       lat:47.483,  lng:-122.217, commute:48, price:660,  walk:57, schools:6.5, safety:6.8, district:"Renton School District",         notes:"Most affordable option on the list. Area improving. Long commute and school quality is a tradeoff." },
+  {name:"Wallingford",lat:47.661,lng:-122.334,commute:12,price:950,walk:87,schools:8.2,safety:8.5,notes:"Quiet, family-friendly, great cafes. Very bikeable to UW across University Bridge."},
+  {name:"Ravenna / Bryant",lat:47.670,lng:-122.307,commute:14,price:875,walk:82,schools:9.1,safety:9.0,notes:"Feeds Eckstein Middle & Roosevelt HS — two of Seattle's strongest public schools. Leafy, stable, community-oriented."},
+  {name:"Cowen Park / Roosevelt",lat:47.665,lng:-122.318,commute:16,price:900,walk:80,schools:8.8,safety:9.0,notes:"Sweet spot between Ravenna and Wallingford. Roosevelt HS feeder. Charming park setting."},
+  {name:"Green Lake",lat:47.680,lng:-122.330,commute:18,price:920,walk:85,schools:8.3,safety:9.0,notes:"Park-centric living, ideal for families. Popular on weekends. Easy bus corridor to UW."},
+  {name:"View Ridge",lat:47.678,lng:-122.288,commute:22,price:970,walk:65,schools:9.2,safety:9.2,notes:"Highly regarded elementary school. More suburban feel, very safe, quiet streets."},
+  {name:"Wedgwood",lat:47.681,lng:-122.299,commute:24,price:800,walk:62,schools:9.0,safety:9.0,notes:"Wedgwood Elementary is a standout. More affordable than comparable NE Seattle areas. Slightly car-dependent."},
+  {name:"Montlake",lat:47.643,lng:-122.302,commute:7,price:1200,walk:72,schools:8.0,safety:9.0,notes:"Closest neighborhood to UW campus. Historic homes, tight-knit feel. Very limited inventory."},
+  {name:"Fremont",lat:47.651,lng:-122.350,commute:16,price:895,walk:88,schools:7.5,safety:7.8,notes:"Most walkable on this list. Eclectic character, dense restaurants and shops. School pipeline less strong."},
+  {name:"Northgate",lat:47.706,lng:-122.327,commute:20,price:650,walk:72,schools:6.5,safety:6.5,notes:"Link Light Rail to UW (~10 min). Most affordable in-city option. Area developing rapidly."},
+  {name:"Columbia City",lat:47.558,lng:-122.291,commute:35,price:700,walk:82,schools:6.8,safety:7.0,notes:"Light Rail access. Diverse, vibrant with great food. Schools improving."},
+  {name:"Mount Baker",lat:47.579,lng:-122.292,commute:28,price:750,walk:74,schools:7.0,safety:7.0,notes:"Lake Washington views, light rail nearby. Affordable for Seattle proper."},
+  {name:"West Seattle (Admiral)",lat:47.576,lng:-122.383,commute:38,price:760,walk:72,schools:7.2,safety:7.5,notes:"Strong neighborhood feel, good schools. West Seattle Bridge traffic can significantly affect commute."},
+  {name:"Shoreline (N. City)",lat:47.757,lng:-122.342,commute:30,price:700,walk:58,schools:8.2,safety:8.2,notes:"Shoreline SD consistently well-rated. Light Rail extension arriving soon."},
+  {name:"Kenmore",lat:47.757,lng:-122.243,commute:42,price:775,walk:44,schools:8.0,safety:8.5,notes:"Northshore SD is strong academically. Lake access. Long commute to UW."},
+  {name:"Bothell (south)",lat:47.762,lng:-122.205,commute:48,price:810,walk:47,schools:8.2,safety:8.5,notes:"Northshore SD. More newer construction. Family-oriented. Significant commute distance."},
+  {name:"Kirkland",lat:47.681,lng:-122.209,commute:42,price:1100,walk:64,schools:8.5,safety:9.0,notes:"Beautiful Eastside city. Excellent schools, genuinely walkable downtown."},
+  {name:"Redmond",lat:47.673,lng:-122.121,commute:52,price:1200,walk:55,schools:9.0,safety:9.0,notes:"Top-tier Eastside schools. Very family-friendly. Significant commute."},
+  {name:"Bellevue (west)",lat:47.610,lng:-122.201,commute:44,price:1350,walk:62,schools:9.2,safety:9.2,notes:"Outstanding school district. East Link transit option. Expensive."},
+  {name:"Mercer Island",lat:47.571,lng:-122.222,commute:36,price:1800,walk:42,schools:9.8,safety:9.8,notes:"Top-rated schools in WA. Very wealthy, very car-dependent."},
+  {name:"Renton (north)",lat:47.483,lng:-122.217,commute:48,price:660,walk:57,schools:6.5,safety:6.8,notes:"Most affordable option. Area improving. Long commute."},
 ];
 
 const FACTORS = [
-  { key:"commute", label:"🚌 Commute Time",   lowerBetter:true,  min:7,   max:52   },
-  { key:"price",   label:"🏠 Affordability",  lowerBetter:true,  min:600, max:1800 },
-  { key:"walk",    label:"🚶 Walkability",    lowerBetter:false, min:42,  max:88   },
-  { key:"schools", label:"🎓 Schools",        lowerBetter:false, min:5.8, max:9.8  },
-  { key:"safety",  label:"🌳 Safety & Feel",  lowerBetter:false, min:6.2, max:9.8  },
+  {key:"commute",label:"🚌 Commute Time", lowerBetter:true, min:7,  max:52  },
+  {key:"price",  label:"🏠 Affordability",lowerBetter:true, min:600,max:1800},
+  {key:"walk",   label:"🚶 Walkability",  lowerBetter:false,min:42, max:88  },
+  {key:"schools",label:"🎓 Schools",      lowerBetter:false,min:5.8,max:9.8 },
+  {key:"safety", label:"🌳 Safety & Feel",lowerBetter:false,min:6.2,max:9.8 },
 ];
 
-let weights  = { commute:5, price:5, walk:3, schools:5, safety:4 };
-let layerVis = { isochrones:true, markers:true };
-let markerObjects = []; // { name, el, mo (Marker), popup }
+let weights = {commute:5,price:5,walk:3,schools:5,safety:4};
+let layerVis = {isochrones:true,markers:true,schools:false};
+let activeLevel = 'elementary';
+let schoolCache = {};
+let markerObjects = [];
+let schoolHoverPopup = null;
 
-// ─── SCORING ──────────────────────────────────────────────────────────────────
-function norm(v, min, max, lb) { const r=(v-min)/(max-min); return lb?1-r:r; }
-function getScore(n) {
-  let t=0, w=0;
-  for (const f of FACTORS) { t += norm(n[f.key],f.min,f.max,f.lowerBetter)*weights[f.key]; w+=weights[f.key]; }
-  return w===0?0:(t/w)*100;
-}
-function scoreColor(pct) { return pct>70?"#7dd3a8":pct>45?"#f4c06f":"#f47a7a"; }
-function ranked() { return [...NBRS].map(n=>({...n,score:getScore(n)})).sort((a,b)=>b.score-a.score); }
+function norm(v,min,max,lb){const r=(v-min)/(max-min);return lb?1-r:r;}
+function getScore(n){let t=0,w=0;for(const f of FACTORS){t+=norm(n[f.key],f.min,f.max,f.lowerBetter)*weights[f.key];w+=weights[f.key];}return w===0?0:(t/w)*100;}
+function scoreColor(pct){return pct>70?"#7dd3a8":pct>45?"#f4c06f":"#f47a7a";}
+function ranked(){return [...NBRS].map(n=>({...n,score:getScore(n)})).sort((a,b)=>b.score-a.score);}
+function cardId(name){return 'c_'+name.replace(/[^a-zA-Z0-9]/g,'_');}
+function esc(s){return s.replace(/'/g,"\\'");}
 
-// ─── SIDEBAR ──────────────────────────────────────────────────────────────────
-function buildWeights() {
-  document.getElementById('weights-panel').innerHTML = FACTORS.map(f=>`
+function buildWeights(){
+  document.getElementById('weights-panel').innerHTML=FACTORS.map(f=>`
     <div class="weight-row">
       <span class="weight-label">${f.label}</span>
       <input type="range" min="0" max="10" step="1" value="${weights[f.key]}"
         oninput="weights['${f.key}']=+this.value;document.getElementById('wv-${f.key}').textContent=this.value;updateAll()">
       <span class="weight-val" id="wv-${f.key}">${weights[f.key]}</span>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function buildList() {
-  const r = ranked();
-  const top = r[0].score;
-  document.getElementById('results-list').innerHTML = r.map((n,i)=>{
-    const pct = (n.score/top)*100;
-    const color = scoreColor(pct);
-    const medal = i===0?"🥇":i===1?"🥈":i===2?"🥉":`#${i+1}`;
-    const cid = cardId(n.name);
-    return `
-    <div class="nbr-card" id="${cid}" onclick="focusNeighborhood('${esc(n.name)}')">
-      <div class="nbr-top">
-        <span class="nbr-rank">${medal}</span>
-        <span class="nbr-name">${n.name}</span>
-        <span class="nbr-score" style="color:${color}">${Math.round(n.score)}</span>
-      </div>
-      <div class="score-bar-bg">
-        <div class="score-bar-fill" style="width:${pct}%;background:${color}"></div>
-      </div>
+function buildList(){
+  const r=ranked(),top=r[0].score;
+  document.getElementById('results-list').innerHTML=r.map((n,i)=>{
+    const pct=(n.score/top)*100,color=scoreColor(pct);
+    const medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":`#${i+1}`;
+    return `<div class="nbr-card" id="${cardId(n.name)}" onclick="focusNeighborhood('${esc(n.name)}')">
+      <div class="nbr-top"><span class="nbr-rank">${medal}</span><span class="nbr-name">${n.name}</span><span class="nbr-score" style="color:${color}">${Math.round(n.score)}</span></div>
+      <div class="score-bar-bg"><div class="score-bar-fill" style="width:${pct}%;background:${color}"></div></div>
       <div class="nbr-stats">
         <div class="nbr-stat">🚌 <span>${n.commute} min</span></div>
         <div class="nbr-stat">🏠 <span>$${n.price}K</span></div>
         <div class="nbr-stat">🚶 <span>${n.walk}/100</span></div>
         <div class="nbr-stat">🎓 <span>${n.schools}/10</span></div>
-      </div>
-    </div>`;
+      </div></div>`;
   }).join('');
 }
 
-function updateMarkers() {
-  const r = ranked();
-  const top = r[0].score;
-  markerObjects.forEach(({name, el})=>{
-    const n = NBRS.find(x=>x.name===name);
-    if (!n) return;
-    const pct = (getScore(n)/top)*100;
-    const color = scoreColor(pct);
-    el.style.background = color;
-    el.querySelector('.ms').textContent = Math.round(getScore(n));
+function updateMarkers(){
+  const r=ranked(),top=r[0].score;
+  markerObjects.forEach(({name,el})=>{
+    const n=NBRS.find(x=>x.name===name);if(!n)return;
+    const pct=(getScore(n)/top)*100,color=scoreColor(pct);
+    el.style.background=color;el.querySelector('.ms').textContent=Math.round(getScore(n));
   });
 }
 
-function updateAll() { buildList(); updateMarkers(); }
-function cardId(name) { return 'c_'+name.replace(/[^a-zA-Z0-9]/g,'_'); }
-function esc(s) { return s.replace(/'/g,"\\'"); }
+function updateAll(){buildList();updateMarkers();}
 
-function focusNeighborhood(name) {
-  const n = NBRS.find(x=>x.name===name);
-  if (!n) return;
-  map.flyTo({ center:[n.lng,n.lat], zoom:13.5, duration:700 });
-  const mo = markerObjects.find(x=>x.name===name);
-  if (mo) { markerObjects.forEach(x=>x.mo.getPopup().remove()); mo.mo.togglePopup(); }
+function focusNeighborhood(name){
+  const n=NBRS.find(x=>x.name===name);if(!n)return;
+  map.flyTo({center:[n.lng,n.lat],zoom:13.5,duration:700});
+  const mo=markerObjects.find(x=>x.name===name);
+  if(mo){markerObjects.forEach(x=>x.mo.getPopup().remove());mo.mo.togglePopup();}
   document.querySelectorAll('.nbr-card').forEach(c=>c.classList.remove('active'));
-  const card = document.getElementById(cardId(name));
-  if (card) { card.classList.add('active'); card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  const card=document.getElementById(cardId(name));
+  if(card){card.classList.add('active');card.scrollIntoView({behavior:'smooth',block:'nearest'});}
 }
 
-// ─── MAP ──────────────────────────────────────────────────────────────────────
-mapboxgl.accessToken = TOKEN;
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/dark-v11',
-  center: [-122.28, 47.63],
-  zoom: 10.2,
-});
-map.addControl(new mapboxgl.NavigationControl({ showCompass:false }), 'top-right');
+async function loadSchoolLevel(level){
+  const loading=document.getElementById('loading');
+  if(!schoolCache[level]){
+    loading.style.display='block';
+    loading.textContent=`Loading ${level} school boundaries…`;
+    try{
+      const res=await fetch(SCHOOL_URLS[level]);
+      const data=await res.json();
+      data.features.forEach(f=>{
+        const p=f.properties;
+        const raw=p.ES_NAME||p.MS_NAME||p.HS_NAME||p.SCHOOL_NAME||p.NAME||p.name||'';
+        p._name=raw;
+        p._rating=lookupRating(raw);
+        p._color=ratingColor(p._rating);
+      });
+      schoolCache[level]=data;
+    }catch(e){
+      console.error('School fetch error:',e);
+      loading.textContent='Could not load school data.';
+      setTimeout(()=>{loading.style.display='none';},2000);
+      return;
+    }
+    loading.style.display='none';
+  }
 
-map.on('load', async ()=>{
-  const loading = document.getElementById('loading');
+  // Tear down old layers
+  if(schoolHoverPopup){schoolHoverPopup.remove();}
+  ['school-fill','school-border','school-labels'].forEach(id=>{if(map.getLayer(id))map.removeLayer(id);});
+  if(map.getSource('schools'))map.removeSource('schools');
 
-  // ── Isochrones ──
-  loading.textContent = 'Fetching commute rings from UW…';
-  try {
-    const url = `https://api.mapbox.com/isochrone/v1/mapbox/driving/${UW[0]},${UW[1]}?contours_minutes=15,30,45&polygons=true&access_token=${TOKEN}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    // Features come back innermost-first; reverse for paint order (largest first)
-    const colors = ['#7dd3a8','#f4c06f','#f47a7a'];
-    const labels = ['45min','30min','15min'];
-    [...data.features].reverse().forEach((feat, i)=>{
-      const id = `iso${i}`;
-      map.addSource(id, { type:'geojson', data:feat });
-      map.addLayer({ id, type:'fill', source:id, paint:{ 'fill-color':colors[i], 'fill-opacity':0.10 }});
-      map.addLayer({ id:id+'b', type:'line', source:id, paint:{ 'line-color':colors[i], 'line-width':1.5, 'line-opacity':0.55 }});
+  map.addSource('schools',{type:'geojson',data:schoolCache[level]});
+
+  map.addLayer({id:'school-fill',type:'fill',source:'schools',
+    paint:{'fill-color':['coalesce',['get','_color'],'#5c6480'],'fill-opacity':0.18}
+  });
+  map.addLayer({id:'school-border',type:'line',source:'schools',
+    paint:{'line-color':['coalesce',['get','_color'],'#5c6480'],'line-width':1.5,'line-opacity':0.7}
+  });
+  map.addLayer({id:'school-labels',type:'symbol',source:'schools',
+    layout:{
+      'text-field':['concat',
+        ['coalesce',['get','_name'],''],
+        ['case',['!=',['typeof',['get','_rating']],'null'],
+          ['concat','\n',['to-string',['get','_rating']],'/10'],
+          ''
+        ]
+      ],
+      'text-font':['DIN Offc Pro Medium','Arial Unicode MS Regular'],
+      'text-size':10,'text-anchor':'center','text-max-width':8,
+    },
+    paint:{'text-color':'#e8eaf0','text-halo-color':'#0b0e16','text-halo-width':1.5}
+  });
+
+  // Hover popup
+  schoolHoverPopup=new mapboxgl.Popup({closeButton:false,closeOnClick:false,offset:6,maxWidth:'200px'});
+  map.on('mouseenter','school-fill',(e)=>{
+    map.getCanvas().style.cursor='pointer';
+    const p=e.features[0].properties;
+    const r=p._rating;
+    schoolHoverPopup.setLngLat(e.lngLat).setHTML(`
+      <div style="font-family:'DM Sans',sans-serif;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px;color:#e8eaf0">${p._name||'Unknown'}</div>
+        <div style="font-size:11px;color:#8891a8;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${level} school</div>
+        ${r?`<div style="font-size:14px;font-weight:700;color:${ratingColor(r)}">${r}/10</div>`:'<div style="font-size:11px;color:#5c6480">Rating not available</div>'}
+      </div>`).addTo(map);
+  });
+  map.on('mousemove','school-fill',(e)=>{if(schoolHoverPopup)schoolHoverPopup.setLngLat(e.lngLat);});
+  map.on('mouseleave','school-fill',()=>{map.getCanvas().style.cursor='';if(schoolHoverPopup)schoolHoverPopup.remove();});
+}
+
+function showSchoolLevel(level){
+  activeLevel=level;
+  document.querySelectorAll('.level-btn').forEach(b=>b.classList.toggle('active',b.dataset.level===level));
+  loadSchoolLevel(level);
+}
+
+mapboxgl.accessToken=TOKEN;
+const map=new mapboxgl.Map({container:'map',style:'mapbox://styles/mapbox/dark-v11',center:[-122.28,47.63],zoom:10.2});
+map.addControl(new mapboxgl.NavigationControl({showCompass:false}),'top-right');
+
+map.on('load',async()=>{
+  const loading=document.getElementById('loading');
+
+  // Isochrones
+  loading.textContent='Fetching commute rings from UW…';
+  try{
+    const url=`https://api.mapbox.com/isochrone/v1/mapbox/driving/${UW[0]},${UW[1]}?contours_minutes=15,30,45&polygons=true&access_token=${TOKEN}`;
+    const res=await fetch(url);
+    const data=await res.json();
+    const colors=['#7dd3a8','#f4c06f','#f47a7a'];
+    [...data.features].reverse().forEach((feat,i)=>{
+      const id=`iso${i}`;
+      map.addSource(id,{type:'geojson',data:feat});
+      map.addLayer({id,type:'fill',source:id,paint:{'fill-color':colors[i],'fill-opacity':0.10}});
+      map.addLayer({id:id+'b',type:'line',source:id,paint:{'line-color':colors[i],'line-width':1.5,'line-opacity':0.55}});
     });
-    document.getElementById('iso-legend').style.display = 'block';
-  } catch(e) { console.warn('Isochrone error:', e); }
+    document.getElementById('iso-legend').style.display='block';
+  }catch(e){console.warn('Isochrone error:',e);}
 
-  // ── UW marker ──
-  const uwEl = document.createElement('div');
-  uwEl.className = 'uw-pin';
-  new mapboxgl.Marker({ element:uwEl })
-    .setLngLat(UW)
-    .setPopup(new mapboxgl.Popup({ offset:18, closeButton:false, maxWidth:'180px' })
-      .setHTML('<div style="font-family:DM Sans,sans-serif;color:#e8eaf0;font-weight:700;font-size:13px;padding:2px 0">🎓 UW Seattle Campus</div>'))
+  // UW pin
+  const uwEl=document.createElement('div');uwEl.className='uw-pin';
+  new mapboxgl.Marker({element:uwEl}).setLngLat(UW)
+    .setPopup(new mapboxgl.Popup({offset:18,closeButton:false,maxWidth:'180px'})
+      .setHTML('<div style="font-family:DM Sans,sans-serif;color:#e8eaf0;font-weight:700;font-size:13px">🎓 UW Seattle Campus</div>'))
     .addTo(map);
 
-  // ── Neighborhood markers ──
-  loading.textContent = 'Placing neighborhood markers…';
-  const r = ranked();
-  const top = r[0].score;
-
+  // Neighborhood markers
+  loading.textContent='Placing neighborhood markers…';
+  const r=ranked(),top=r[0].score;
   NBRS.forEach(n=>{
-    const score = getScore(n);
-    const pct   = (score/top)*100;
-    const color = scoreColor(pct);
-
-    const el = document.createElement('div');
-    el.style.cssText = `
-      width:34px;height:34px;border-radius:50%;background:${color};
-      border:2.5px solid rgba(255,255,255,0.18);
-      display:flex;align-items:center;justify-content:center;
-      cursor:pointer;font-family:'DM Mono',monospace;font-size:10px;
-      font-weight:600;color:#0f1219;
-      box-shadow:0 2px 10px rgba(0,0,0,0.45);
-      transition:transform 0.15s,box-shadow 0.15s;
-    `;
-    el.innerHTML = `<span class="ms">${Math.round(score)}</span>`;
-    el.onmouseenter = ()=>{ el.style.transform='scale(1.22)'; el.style.boxShadow='0 4px 16px rgba(0,0,0,0.6)'; };
-    el.onmouseleave = ()=>{ el.style.transform='scale(1)';    el.style.boxShadow='0 2px 10px rgba(0,0,0,0.45)'; };
-
-    const popupHtml = `
+    const score=getScore(n),pct=(score/top)*100,color=scoreColor(pct);
+    const el=document.createElement('div');
+    el.style.cssText=`width:34px;height:34px;border-radius:50%;background:${color};border:2.5px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'DM Mono',monospace;font-size:10px;font-weight:600;color:#0f1219;box-shadow:0 2px 10px rgba(0,0,0,0.45);transition:transform 0.15s,box-shadow 0.15s;`;
+    el.innerHTML=`<span class="ms">${Math.round(score)}</span>`;
+    el.onmouseenter=()=>{el.style.transform='scale(1.22)';el.style.boxShadow='0 4px 16px rgba(0,0,0,0.6)';};
+    el.onmouseleave=()=>{el.style.transform='scale(1)';el.style.boxShadow='0 2px 10px rgba(0,0,0,0.45)';};
+    const popupHtml=`
       <div class="popup-name">${n.name}</div>
-      <div class="popup-district">${n.district}</div>
+      <div class="popup-district">Seattle Public Schools</div>
       <div class="popup-grid">
         <div class="popup-stat"><span class="lbl">🚌 Commute</span><span class="val">${n.commute} min</span></div>
         <div class="popup-stat"><span class="lbl">🏠 Median price</span><span class="val">$${n.price}K</span></div>
@@ -348,42 +391,50 @@ map.on('load', async ()=>{
         <div class="popup-stat"><span class="lbl">🌳 Safety</span><span class="val">${n.safety}/10</span></div>
         <div class="popup-stat"><span class="lbl">⭐ Score</span><span class="val" style="color:${color}">${Math.round(score)}</span></div>
       </div>
-      <div class="popup-notes">${n.notes}</div>
-    `;
-
-    const pop = new mapboxgl.Popup({ offset:22, closeButton:true, maxWidth:'260px' }).setHTML(popupHtml);
-    const mo  = new mapboxgl.Marker({ element:el }).setLngLat([n.lng,n.lat]).setPopup(pop).addTo(map);
-
-    // Highlight sidebar card when popup opens
-    pop.on('open', ()=>{
+      <div class="popup-notes">${n.notes}</div>`;
+    const pop=new mapboxgl.Popup({offset:22,closeButton:true,maxWidth:'260px'}).setHTML(popupHtml);
+    const mo=new mapboxgl.Marker({element:el}).setLngLat([n.lng,n.lat]).setPopup(pop).addTo(map);
+    pop.on('open',()=>{
       document.querySelectorAll('.nbr-card').forEach(c=>c.classList.remove('active'));
-      const card = document.getElementById(cardId(n.name));
-      if (card) { card.classList.add('active'); card.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+      const card=document.getElementById(cardId(n.name));
+      if(card){card.classList.add('active');card.scrollIntoView({behavior:'smooth',block:'nearest'});}
     });
-
-    markerObjects.push({ name:n.name, el, mo, pop });
+    markerObjects.push({name:n.name,el,mo,pop});
   });
 
-  // ── Layer toggles ──
+  // Layer toggles
   document.querySelectorAll('.layer-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const layer = btn.dataset.layer;
-      layerVis[layer] = !layerVis[layer];
-      btn.classList.toggle('active', layerVis[layer]);
-
-      if (layer==='isochrones') {
-        ['iso0','iso1','iso2','iso0b','iso1b','iso2b'].forEach(id=>{
-          if (map.getLayer(id)) map.setLayoutProperty(id,'visibility',layerVis.isochrones?'visible':'none');
-        });
-        document.getElementById('iso-legend').style.display = layerVis.isochrones?'block':'none';
+    btn.addEventListener('click',()=>{
+      const layer=btn.dataset.layer;
+      layerVis[layer]=!layerVis[layer];
+      btn.classList.toggle('active',layerVis[layer]);
+      if(layer==='isochrones'){
+        ['iso0','iso1','iso2','iso0b','iso1b','iso2b'].forEach(id=>{if(map.getLayer(id))map.setLayoutProperty(id,'visibility',layerVis.isochrones?'visible':'none');});
+        document.getElementById('iso-legend').style.display=layerVis.isochrones?'block':'none';
       }
-      if (layer==='markers') {
-        markerObjects.forEach(({el})=>{ el.style.display = layerVis.markers?'flex':'none'; });
+      if(layer==='markers'){
+        markerObjects.forEach(({el})=>{el.style.display=layerVis.markers?'flex':'none';});
+      }
+      if(layer==='schools'){
+        if(layerVis.schools){
+          document.getElementById('school-level-panel').classList.add('visible');
+          document.getElementById('school-legend').style.display='block';
+          loadSchoolLevel(activeLevel);
+        }else{
+          document.getElementById('school-level-panel').classList.remove('visible');
+          document.getElementById('school-legend').style.display='none';
+          ['school-fill','school-border','school-labels'].forEach(id=>{if(map.getLayer(id))map.setLayoutProperty(id,'visibility','none');});
+        }
       }
     });
   });
 
-  loading.style.display = 'none';
+  // School level toggles
+  document.querySelectorAll('.level-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>showSchoolLevel(btn.dataset.level));
+  });
+
+  loading.style.display='none';
   buildWeights();
   buildList();
 });
