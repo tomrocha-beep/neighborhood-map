@@ -272,9 +272,16 @@ async function loadSchoolLevel(level){
     try{
       const res=await fetch(SCHOOL_URLS[level]);
       const data=await res.json();
+      if(data.features.length>0){
+        console.log('[Schools] Field names:', Object.keys(data.features[0].properties));
+        console.log('[Schools] Sample feature:', data.features[0].properties);
+      }
       data.features.forEach(f=>{
         const p=f.properties;
-        const raw=p.ES_NAME||p.MS_NAME||p.HS_NAME||p.SCHOOL_NAME||p.NAME||p.name||'';
+        const raw=p.ES_NAME||p.MS_NAME||p.HS_NAME||
+                  p.SCHOOL_NAME||p.SchoolName||p.SCHOOLNAME||
+                  p.NAME||p.name||p.School_Name||p.school_name||
+                  p.ELEM_NAME||p.MID_NAME||p.HIGH_NAME||'';
         p._name=raw;
         p._rating=lookupRating(raw);
         p._color=ratingColor(p._rating);
@@ -303,17 +310,19 @@ async function loadSchoolLevel(level){
     paint:{'line-color':['coalesce',['get','_color'],'#5c6480'],'line-width':1.5,'line-opacity':0.7}
   });
   map.addLayer({id:'school-labels',type:'symbol',source:'schools',
+    minzoom: 11,
     layout:{
       'text-field': ['coalesce', ['get','_name'], ''],
-      'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+      'text-font': ['Roboto Medium', 'Arial Unicode MS Regular'],
       'text-size': 11,
       'text-anchor': 'center',
       'text-max-width': 8,
-      'text-allow-overlap': false,
+      'text-allow-overlap': true,
+      'text-ignore-placement': true,
     },
     paint:{
       'text-color': '#ffffff',
-      'text-halo-color': '#0b0e16',
+      'text-halo-color': '#000000',
       'text-halo-width': 2,
     }
   });
