@@ -293,7 +293,7 @@ map.on('load', async ()=>{
     const res = await fetch(url);
     const data = await res.json();
     // Features come back innermost-first; reverse for paint order (largest first)
-    const colors = ['#f47a7a','#f4c06f','#7dd3a8'];
+    const colors = ['#7dd3a8','#f4c06f','#f47a7a'];
     const labels = ['45min','30min','15min'];
     [...data.features].reverse().forEach((feat, i)=>{
       const id = `iso${i}`;
