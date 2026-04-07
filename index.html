@@ -74,6 +74,30 @@ input[type=range] { flex: 1; accent-color: #7dd3a8; cursor: pointer; height: 2px
 .loading-msg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(11,14,22,0.92); border: 1px solid #1e2433; border-radius: 10px; padding: 14px 22px; font-size: 13px; color: #8891a8; z-index: 20; backdrop-filter: blur(6px); pointer-events: none; white-space: nowrap; }
 .uw-pin { width: 14px; height: 14px; background: #7dd3a8; border: 3px solid #e8eaf0; border-radius: 50%; box-shadow: 0 0 0 3px rgba(125,211,168,0.35), 0 2px 8px rgba(0,0,0,0.5); }
 .data-note { padding: 8px 18px 14px; font-size: 10px; color: #3a4050; line-height: 1.6; border-top: 1px solid #1a2030; margin-top: 4px; }
+
+.school-html-label {
+  pointer-events: none;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.shl-name {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 3px #000, 0 0 6px #000;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+.shl-rating {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: #7dd3a8;
+  text-shadow: 0 1px 3px #000;
+  white-space: nowrap;
+}
 </style>
 </head>
 <body>
@@ -298,7 +322,8 @@ async function loadSchoolLevel(level){
 
   // Tear down old layers
   if(schoolHoverPopup){schoolHoverPopup.remove();}
-  ['school-fill','school-border','school-labels'].forEach(id=>{if(map.getLayer(id))map.removeLayer(id);});
+  (window._schoolLabels||[]).forEach(m=>m.remove());window._schoolLabels=[];
+  ['school-fill','school-border'].forEach(id=>{if(map.getLayer(id))map.removeLayer(id);});
   if(map.getSource('schools'))map.removeSource('schools');
 
   map.addSource('schools',{type:'geojson',data:schoolCache[level]});
@@ -309,23 +334,27 @@ async function loadSchoolLevel(level){
   map.addLayer({id:'school-border',type:'line',source:'schools',
     paint:{'line-color':['coalesce',['get','_color'],'#5c6480'],'line-width':1.5,'line-opacity':0.7}
   });
-  map.addLayer({id:'school-labels',type:'symbol',source:'schools',
-    minzoom: 11,
-    layout:{
-      'text-field': ['coalesce', ['get','_name'], ''],
-      'text-font': ['Roboto Medium', 'Arial Unicode MS Regular'],
-      'text-size': 11,
-      'text-anchor': 'center',
-      'text-max-width': 8,
-      'text-allow-overlap': true,
-      'text-ignore-placement': true,
-    },
-    paint:{
-      'text-color': '#ffffff',
-      'text-halo-color': '#000000',
-      'text-halo-width': 2,
-    }
+  // HTML labels at polygon centroids — bypasses Mapbox font system
+  (window._schoolLabels||[]).forEach(m=>m.remove());
+  window._schoolLabels=[];
+  schoolCache[level].features.forEach(f=>{
+    const p=f.properties;
+    if(!p._name)return;
+    const ring=f.geometry.type==='Polygon'?f.geometry.coordinates[0]:f.geometry.coordinates[0][0];
+    const lng=ring.reduce((s,c)=>s+c[0],0)/ring.length;
+    const lat=ring.reduce((s,c)=>s+c[1],0)/ring.length;
+    const el=document.createElement('div');
+    el.className='school-html-label';
+    el.innerHTML=`<span class="shl-name">${p._name||''}</span>${p._rating?`<span class="shl-rating">${p._rating}/10</span>`:''}`;
+    const m=new mapboxgl.Marker({element:el,anchor:'center'}).setLngLat([lng,lat]).addTo(map);
+    window._schoolLabels.push(m);
   });
+  const syncZ=()=>{
+    const show=map.getZoom()>=11;
+    (window._schoolLabels||[]).forEach(m=>m.getElement().style.display=show?'block':'none');
+  };
+  if(window._schoolZoomFn)map.off('zoom',window._schoolZoomFn);
+  window._schoolZoomFn=syncZ;map.on('zoom',syncZ);syncZ();
 
   // Hover popup
   schoolHoverPopup=new mapboxgl.Popup({closeButton:false,closeOnClick:false,offset:6,maxWidth:'200px'});
@@ -433,7 +462,7 @@ map.on('load',async()=>{
         }else{
           document.getElementById('school-level-panel').classList.remove('visible');
           document.getElementById('school-legend').style.display='none';
-          ['school-fill','school-border','school-labels'].forEach(id=>{if(map.getLayer(id))map.setLayoutProperty(id,'visibility','none');});
+          ['school-fill','school-border'].forEach(id=>{if(map.getLayer(id))map.setLayoutProperty(id,'visibility','none');}); (window._schoolLabels||[]).forEach(m=>m.getElement().style.display='none');
         }
       }
     });
