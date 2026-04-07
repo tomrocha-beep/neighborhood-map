@@ -130,6 +130,8 @@ input[type=range] { flex: 1; accent-color: #7dd3a8; cursor: pointer; height: 2px
 </div>
 
 <div id="map-wrap">
+  <div id="debug-box" style="position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.85);color:#7dd3a8;font-family:monospace;font-size:11px;padding:10px 14px;border-radius:8px;z-index:100;max-width:500px;word-break:break-all;border:1px solid #2a3450;display:none;">Loading...</div>
+
   <div id="map"></div>
   <div class="loading-msg" id="loading">Loading map…</div>
 
@@ -297,8 +299,13 @@ async function loadSchoolLevel(level){
       const res=await fetch(SCHOOL_URLS[level]);
       const data=await res.json();
       if(data.features.length>0){
-        console.log('[Schools] Field names:', Object.keys(data.features[0].properties));
-        console.log('[Schools] Sample feature:', data.features[0].properties);
+        const p0=data.features[0].properties;
+        const keys=Object.keys(p0);
+        const db=document.getElementById('debug-box');
+        db.style.display='block';
+        db.innerHTML='<b>Fields:</b> '+keys.join(', ')+'<br><b>First values:</b> '+keys.slice(0,6).map(k=>k+'='+JSON.stringify(p0[k])).join(', ')+'<br><b>_name result:</b> '+(p0.ES_NAME||p0.MS_NAME||p0.HS_NAME||p0.SCHOOL_NAME||p0.SchoolName||p0.SCHOOLNAME||p0.NAME||p0.name||'[EMPTY - none matched]');
+        console.log('[Schools] Fields:', keys);
+        console.log('[Schools] Sample:', p0);
       }
       data.features.forEach(f=>{
         const p=f.properties;
